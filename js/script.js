@@ -1,7 +1,12 @@
-let imgBox = document.getElementById("imgBox");
-let qrImage = document.getElementById("qrImage");
-let qrText = document.getElementById("qrText");
-function generateQR() {
+document.addEventListener("readystatechange", (event) => {
+  if (event.target.readyState === "complete") {
+    initApp();
+  }
+});
+const initApp = () => {
+  let imgBox = document.getElementById("imgBox");
+  let qrImage = document.getElementById("qrImage");
+  let qrText = document.getElementById("qrText");
   if (qrText.value.trim().length > 0) {
     qrImage.src =
       "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
@@ -13,4 +18,4 @@ function generateQR() {
       qrText.classList.remove("error");
     }, 1000);
   }
-}
+};
